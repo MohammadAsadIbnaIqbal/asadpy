@@ -96,7 +96,7 @@ async def trigger_sentry_error():
     zero_division = 1 / 0
     return {"result": zero_division}
 
-@app.get("/health", status_code=status.HTTP_200_OK, tags=["Monitoring"])
+@app.api_route("/health", methods=["GET", "HEAD"], status_code=status.HTTP_200_OK, tags=["Monitoring"])
 async def health_check():
     try:
         async with engine.connect() as conn:
